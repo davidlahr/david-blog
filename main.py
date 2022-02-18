@@ -15,9 +15,14 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from functools import wraps
 from flask import abort
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+secret_key = os.getenv('SECRET_KEY')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = secret_key
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
